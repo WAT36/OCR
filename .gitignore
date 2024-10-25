@@ -1,0 +1,4 @@
+input/*
+output/*
+!sample_aws.png
+!sample_output.txt
