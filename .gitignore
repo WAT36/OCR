@@ -1,4 +1,4 @@
-input/*
-output/*
+src/input/*
+src/output/*
 !sample_aws.png
 !sample_output.txt
