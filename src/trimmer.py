@@ -1,8 +1,11 @@
 from PIL import Image
+from PIL import ImageDraw
 import sys
 import os
 
-# 英文法用
+#####################
+## 英文法用の設定値 ###
+#####################
 LEFT_TOP_MARGIN = 160
 LEFT_BOTTOM_MARGIN = 220
 LEFT_LEFT_MARGIN = 180
@@ -12,6 +15,7 @@ RIGHT_TOP_MARGIN = 110
 RIGHT_BOTTOM_MARGIN = 160
 RIGHT_LEFT_MARGIN = 130
 RIGHT_RIGHT_MARGIN = 90
+######################
 
 args = sys.argv
 
@@ -42,4 +46,20 @@ img_left = crop_left(im)
 img_left.save(img_file[:-4]+'-left'+img_file[-4:])
 
 img_right = crop_right(im)
+
+########################
+### ここは英文法用の処理 ##
+########################
+draw = ImageDraw.Draw(img_right) 
+# 伏せる用の長方形
+rectcolor = (255, 255, 255) # 矩形の色(RGB)。
+linewidth = 1 # 線の太さ
+# 問題番号の部分を全て塗りつぶす
+draw.rectangle([(10, 20), (120, 45)],fill=(255, 255, 255),outline=rectcolor, width=linewidth)
+draw.rectangle([(10, 280), (120, 310)],fill=(255, 255, 255),outline=rectcolor, width=linewidth)
+draw.rectangle([(10, 600), (120, 625)],fill=(255, 255, 255),outline=rectcolor, width=linewidth)
+draw.rectangle([(10, 890), (120, 920)],fill=(255, 255, 255),outline=rectcolor, width=linewidth)
+draw.rectangle([(10, 1125), (120, 1150)],fill=(255, 255, 255),outline=rectcolor, width=linewidth)
+#########################
+
 img_right.save(img_file[:-4]+'-right'+img_file[-4:])
