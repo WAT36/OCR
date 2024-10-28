@@ -57,7 +57,7 @@ with open(right_txt_file) as f:
         if(line.strip() == ''):
             if(len(statements)>0):
                 #答え,解説　で登録
-                output_txt[question_count]=(output_txt[question_count]+(','+statements[0][-1]+','+''.join(statements[1:]))).replace('\n', '')
+                output_txt[question_count]=(output_txt[question_count]+(','+statements[0].strip()[-1]+','+''.join(statements[1:]))).replace('\n', '')
                 question_count+=1
                 statements=[]
         else:
