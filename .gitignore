@@ -1,4 +1,5 @@
 src/input/*
 src/output/*
+src/output_formatted/*
 !sample_aws.png
 !sample_output.txt
