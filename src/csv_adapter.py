@@ -49,6 +49,24 @@ with open(left_txt_file) as f:
         else:
             sentense += line + ' '
 
+# reading right file
+with open(right_txt_file) as f:
+    question_count=0
+    statements=[]
+    for line in f:
+        if(line.strip() == ''):
+            if(len(statements)>0):
+                #答え,解説　で登録
+                output_txt[question_count]=(output_txt[question_count]+(','+statements[0][-1]+','+''.join(statements[1:]))).replace('\n', '')
+                question_count+=1
+                statements=[]
+        else:
+            reline=re.sub(r' ([\(\)a-zA-Z]+)','@\\1',line)
+            reline=re.sub(r'([\(\)a-zA-Z]+) ','\\1@',reline)
+            reline=reline.replace(' ','').replace('@',' ').replace(',','、')
+            statements.append(reline)
+
 # csvファイルに書き込み
 with open(output_csv_file, mode='w') as f:
     f.write('\n'.join(output_txt))
+
