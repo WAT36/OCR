@@ -6,7 +6,7 @@ import os
 #####################
 ## 英文法用の設定値 ###
 #####################
-LEFT_TOP_MARGIN = 160
+LEFT_TOP_MARGIN = 95
 LEFT_BOTTOM_MARGIN = 220
 LEFT_LEFT_MARGIN = 180
 LEFT_RIGHT_MARGIN = 0
