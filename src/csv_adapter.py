@@ -30,7 +30,7 @@ with open(left_txt_file) as f:
     for line in f:
         if(re.search('-{3,20}',line)):
             # 問題文データを登録
-            sentense=line+' '
+            sentense=line.replace(',','、')+' '
         elif(re.search(r'\([ABCD]',line)):
             # 選択肢の場合
             question['option'].append(re.sub(r'\([ABCD].* +','',line).replace('\n', ''))
@@ -47,7 +47,7 @@ with open(left_txt_file) as f:
                 sentense = ''
             continue
         else:
-            sentense += line + ' '
+            sentense += line.replace(',','、') + ' '
 
 # reading right file
 with open(right_txt_file) as f:
@@ -57,8 +57,8 @@ with open(right_txt_file) as f:
         if(line.strip() == ''):
             # 空行の場合は前行までの読み込みデータを整理して保存
             if(len(statements)>2):
-                #答え,解説　で登録
-                output_txt[question_count]=(output_txt[question_count]+(','+statements[0].strip()[-1]+','+''.join(statements[1:]))).replace('\n', '')
+                #解説を登録
+                output_txt[question_count]=(output_txt[question_count]+(','+''.join(statements[1:]))).replace('\n', '')
                 question_count+=1
                 statements=[]
             else:
