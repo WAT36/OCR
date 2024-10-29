@@ -55,29 +55,29 @@ draw = ImageDraw.Draw(img_right)
 rectcolor = (255, 255, 255) # 矩形の色(RGB)。
 linewidth = 1 # 線の太さ
 # 問題番号の部分を全て塗りつぶす
-draw.rectangle([(10, 20), (120, 45)],fill=(255, 255, 255),outline=rectcolor, width=linewidth)
-draw.rectangle([(10, 280), (120, 310)],fill=(255, 255, 255),outline=rectcolor, width=linewidth)
-draw.rectangle([(10, 600), (120, 625)],fill=(255, 255, 255),outline=rectcolor, width=linewidth)
-draw.rectangle([(10, 890), (120, 920)],fill=(255, 255, 255),outline=rectcolor, width=linewidth)
-draw.rectangle([(10, 1125), (120, 1150)],fill=(255, 255, 255),outline=rectcolor, width=linewidth)
-# 「正解( )」の部分を全て塗りつぶす
-draw.rectangle([(755, 20), (826, 45)],fill=(255, 255, 255),outline=rectcolor, width=linewidth)
-draw.rectangle([(755, 280), (826, 310)],fill=(255, 255, 255),outline=rectcolor, width=linewidth)
-draw.rectangle([(755, 600), (826, 625)],fill=(255, 255, 255),outline=rectcolor, width=linewidth)
-draw.rectangle([(755, 890), (826, 920)],fill=(255, 255, 255),outline=rectcolor, width=linewidth)
-draw.rectangle([(755, 1125), (826, 1150)],fill=(255, 255, 255),outline=rectcolor, width=linewidth)
-draw.rectangle([(842, 20), (850, 45)],fill=(255, 255, 255),outline=rectcolor, width=linewidth)
-draw.rectangle([(842, 280), (850, 310)],fill=(255, 255, 255),outline=rectcolor, width=linewidth)
-draw.rectangle([(842, 600), (850, 625)],fill=(255, 255, 255),outline=rectcolor, width=linewidth)
-draw.rectangle([(842, 890), (850, 920)],fill=(255, 255, 255),outline=rectcolor, width=linewidth)
-draw.rectangle([(842, 1125), (850, 1150)],fill=(255, 255, 255),outline=rectcolor, width=linewidth)
-# 語句訳の部分を全て塗りつぶす
-img_right_width, img_right_height = img_right.size
-draw.rectangle([(0, 200), (img_right_width, 250)],fill=(255, 255, 255),outline=rectcolor, width=linewidth)
-draw.rectangle([(0, 495), (img_right_width, 580)],fill=(255, 255, 255),outline=rectcolor, width=linewidth)
-draw.rectangle([(0, 810), (img_right_width, 880)],fill=(255, 255, 255),outline=rectcolor, width=linewidth)
-draw.rectangle([(0, 1045), (img_right_width, 1120)],fill=(255, 255, 255),outline=rectcolor, width=linewidth)
-draw.rectangle([(0, 1280), (img_right_width, img_right_height)],fill=(255, 255, 255),outline=rectcolor, width=linewidth)
+# draw.rectangle([(10, 20), (120, 45)],fill=(255, 255, 255),outline=rectcolor, width=linewidth)
+# draw.rectangle([(10, 280), (120, 310)],fill=(255, 255, 255),outline=rectcolor, width=linewidth)
+# draw.rectangle([(10, 600), (120, 625)],fill=(255, 255, 255),outline=rectcolor, width=linewidth)
+# draw.rectangle([(10, 890), (120, 920)],fill=(255, 255, 255),outline=rectcolor, width=linewidth)
+# draw.rectangle([(10, 1125), (120, 1150)],fill=(255, 255, 255),outline=rectcolor, width=linewidth)
+# # 「正解( )」の部分を全て塗りつぶす
+# draw.rectangle([(755, 20), (826, 45)],fill=(255, 255, 255),outline=rectcolor, width=linewidth)
+# draw.rectangle([(755, 280), (826, 310)],fill=(255, 255, 255),outline=rectcolor, width=linewidth)
+# draw.rectangle([(755, 600), (826, 625)],fill=(255, 255, 255),outline=rectcolor, width=linewidth)
+# draw.rectangle([(755, 890), (826, 920)],fill=(255, 255, 255),outline=rectcolor, width=linewidth)
+# draw.rectangle([(755, 1125), (826, 1150)],fill=(255, 255, 255),outline=rectcolor, width=linewidth)
+# draw.rectangle([(842, 20), (850, 45)],fill=(255, 255, 255),outline=rectcolor, width=linewidth)
+# draw.rectangle([(842, 280), (850, 310)],fill=(255, 255, 255),outline=rectcolor, width=linewidth)
+# draw.rectangle([(842, 600), (850, 625)],fill=(255, 255, 255),outline=rectcolor, width=linewidth)
+# draw.rectangle([(842, 890), (850, 920)],fill=(255, 255, 255),outline=rectcolor, width=linewidth)
+# draw.rectangle([(842, 1125), (850, 1150)],fill=(255, 255, 255),outline=rectcolor, width=linewidth)
+# # 語句訳の部分を全て塗りつぶす
+# img_right_width, img_right_height = img_right.size
+# draw.rectangle([(0, 200), (img_right_width, 250)],fill=(255, 255, 255),outline=rectcolor, width=linewidth)
+# draw.rectangle([(0, 495), (img_right_width, 580)],fill=(255, 255, 255),outline=rectcolor, width=linewidth)
+# draw.rectangle([(0, 810), (img_right_width, 880)],fill=(255, 255, 255),outline=rectcolor, width=linewidth)
+# draw.rectangle([(0, 1045), (img_right_width, 1120)],fill=(255, 255, 255),outline=rectcolor, width=linewidth)
+# draw.rectangle([(0, 1280), (img_right_width, img_right_height)],fill=(255, 255, 255),outline=rectcolor, width=linewidth)
 #########################
 
 img_right.save(img_file[:-4]+'-right'+img_file[-4:])
