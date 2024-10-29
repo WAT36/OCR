@@ -55,10 +55,13 @@ with open(right_txt_file) as f:
     statements=[]
     for line in f:
         if(line.strip() == ''):
-            if(len(statements)>0):
+            # 空行の場合は前行までの読み込みデータを整理して保存
+            if(len(statements)>2):
                 #答え,解説　で登録
                 output_txt[question_count]=(output_txt[question_count]+(','+statements[0].strip()[-1]+','+''.join(statements[1:]))).replace('\n', '')
                 question_count+=1
+                statements=[]
+            else:
                 statements=[]
         else:
             reline=re.sub(r' ([\(\)a-zA-Z]+)','@\\1',line)
