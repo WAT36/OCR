@@ -52,6 +52,8 @@ with open(input_csv_file) as f:
         else:
             print("Error: Answer is not inproper value. {0}".format(csv_data[5]))
             sys.exit(1)
+        # 問題ファイルIDを先頭に添える
+        csv_data.insert(0,8)
         output_txt.append(','.join(csv_data))
         index+=1
 
