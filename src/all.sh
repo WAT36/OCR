@@ -1,12 +1,13 @@
 #!/bin/bash
 
-# 引数の数が１つかチェックする
-if [ "$#" -ne 1 ]; then
-  echo "Error: Usage $0 (Input img file)"
+# 引数の数が２つかチェックする
+if [ "$#" -ne 2 ]; then
+  echo "Error: Usage $0 (Input img file) (Output formatted csv file)"
   exit 1
 fi
 
 INPUT_IMG_FILE=$1
+OUTPUT_CSV_FILE=$2
 INPUT_IMG_NAME=${INPUT_IMG_FILE/%.PNG/}
 
 # ファイル存在チェック
@@ -55,10 +56,8 @@ if [ $rc -ne 0 ]; then
 fi
 echo "--- Success - tesseract right ---"
 
-OUTPUT_CSV_FORMATTED="./output_formatted/${DATE}-formatted.csv"
-
 # 文字起こしデータをcsvに変換する
-python3 csv_adapter.py "${OUTPUT_LEFT_TXT}.txt" "${OUTPUT_RIGHT_TXT}.txt" ${OUTPUT_CSV_FORMATTED}
+python3 csv_adapter.py "${OUTPUT_LEFT_TXT}.txt" "${OUTPUT_RIGHT_TXT}.txt" ${OUTPUT_CSV_FILE}
 rc=$?
 if [ $rc -ne 0 ]; then
   echo "Error occured in csv_adapter"

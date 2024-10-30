@@ -70,6 +70,6 @@ with open(right_txt_file) as f:
             statements.append(reline)
 
 # csvファイルに書き込み(問題文,選択肢1,選択肢2,選択肢3,選択肢4,答え(仮で@),解説)
-with open(output_csv_file, mode='w') as f:
+with open(output_csv_file, mode='a') as f:
     f.write('\n'.join(output_txt))
 
