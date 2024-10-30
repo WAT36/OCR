@@ -58,7 +58,7 @@ with open(right_txt_file) as f:
             # 空行の場合は前行までの読み込みデータを整理して保存
             if(len(statements)>2):
                 #解説を登録
-                output_txt[question_count]=(output_txt[question_count]+(','+''.join(statements[1:]))).replace('\n', '')
+                output_txt[question_count]=(output_txt[question_count]+(',@,'+''.join(statements[1:]))).replace('\n', '')
                 question_count+=1
                 statements=[]
             else:
@@ -69,7 +69,7 @@ with open(right_txt_file) as f:
             reline=reline.replace(' ','').replace('@',' ').replace(',','、')
             statements.append(reline)
 
-# csvファイルに書き込み
+# csvファイルに書き込み(問題文,選択肢1,選択肢2,選択肢3,選択肢4,答え(仮で@),解説)
 with open(output_csv_file, mode='w') as f:
     f.write('\n'.join(output_txt))
 
