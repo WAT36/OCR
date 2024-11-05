@@ -58,7 +58,12 @@ with open(right_txt_file) as f:
             # 空行の場合は前行までの読み込みデータを整理して保存
             if(len(statements)>2):
                 #解説を登録
-                output_txt[question_count]=(output_txt[question_count]+(',@,'+''.join(statements[1:]))).replace('\n', '')
+                #print(question_count,len(output_txt),len(statements))
+                if(question_count < len(output_txt)):
+                    output_txt[question_count]=(output_txt[question_count]+(',@,'+''.join(statements[1:]))).replace('\n', '')
+                else:
+                    print('---  Warning!! list index out of range. you must check and revise output csv. ---')
+                    output_txt.append((',@,'+''.join(statements[1:])).replace('\n', ''))
                 question_count+=1
                 statements=[]
             else:
@@ -72,4 +77,5 @@ with open(right_txt_file) as f:
 # csvファイルに書き込み(問題文,選択肢1,選択肢2,選択肢3,選択肢4,答え(仮で@),解説)
 with open(output_csv_file, mode='a') as f:
     f.write('\n'.join(output_txt))
+    f.write('\n')
 
