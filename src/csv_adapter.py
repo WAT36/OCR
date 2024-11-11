@@ -28,9 +28,9 @@ with open(left_txt_file) as f:
     question={'sentense': '','option':[]}
     sentense = ''
     for line in f:
-        if(re.search('-{3,20}',line)):
+        if(re.search('-{3,20}',line) or re.search('ー{2,20}',line)):
             # 問題文データを登録
-            sentense=line.replace(',','、')+' '
+            sentense=re.sub(r'ーー+','-------',line).replace(',','、')+' '
         elif(re.search(r'\([ABCD]',line)):
             # 選択肢の場合
             question['option'].append(re.sub(r'\([ABCD].* +','',line).replace('\n', ''))
