@@ -16,6 +16,7 @@ if [ ! -f $INPUT_IMG_FILE ]; then
     exit 1
 fi
 
+# TODO 相対パスの設定　入力画像ファイルも相対パス対応すべき
 PWD=`pwd`
 DIR=`dirname $0`
 cd $DIR
@@ -66,4 +67,9 @@ if [ $rc -ne 0 ]; then
 fi
 echo "--- Success - csv_adapter ---"
 
+# 操作したPNGをoldへ移動
+mv ${INPUT_IMG_NAME}* ./input/old
+
 # この後　答えの更新は自分の手でやること
+
+cd $PWD
