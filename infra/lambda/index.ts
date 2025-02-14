@@ -57,7 +57,7 @@ export const handler: S3Handler = async (event: S3Event) => {
         .promise();
 
       console.log(
-        `Processed and saved text to: s3://${bucketName}/output/${outputFileKey}`
+        `Processed and saved text to: s3://${bucketName}/${outputFileKey}`
       );
     } catch (error) {
       console.error(`Error processing ${fileKey}:`, error);

@@ -42,9 +42,12 @@ export class InfraStack extends cdk.Stack {
     );
 
     // S3 イベント通知を設定（画像がアップロードされたら Lambda をトリガー）
+    // ✅ S3 の特定フォルダ（prefix）に対してのみ Lambda を実行
+    const prefix = "input/"; // 🔹 S3 のフォルダ名（例: input-folder/）
     ocrFileBucket.addEventNotification(
       s3.EventType.OBJECT_CREATED,
-      new s3n.LambdaDestination(lambdaFunction)
+      new s3n.LambdaDestination(lambdaFunction),
+      { prefix } // 🔹 ここでプレフィックスを指定
     );
 
     // スタックの出力
