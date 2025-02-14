@@ -44,7 +44,9 @@ export const handler: S3Handler = async (event: S3Event) => {
       }
 
       // S3 にテキストファイルとして保存
-      const outputFileKey = fileKey.replace(/\.(jpg|jpeg|png)$/i, ".txt");
+      const outputFileKey = fileKey
+        .replace(/input\//i, "output/")
+        .replace(/\.(jpg|jpeg|png)$/i, ".txt");
       await s3
         .putObject({
           Bucket: bucketName,

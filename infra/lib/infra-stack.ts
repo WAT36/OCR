@@ -1,10 +1,9 @@
 import * as cdk from "aws-cdk-lib";
 import * as s3 from "aws-cdk-lib/aws-s3";
+import * as s3n from "aws-cdk-lib/aws-s3-notifications";
 import * as lambda from "aws-cdk-lib/aws-lambda";
 import * as lambda_nodejs from "aws-cdk-lib/aws-lambda-nodejs";
 import * as iam from "aws-cdk-lib/aws-iam";
-import * as events from "aws-cdk-lib/aws-events";
-import * as targets from "aws-cdk-lib/aws-events-targets";
 import { Construct } from "constructs";
 import * as path from "path";
 
@@ -13,8 +12,8 @@ export class InfraStack extends cdk.Stack {
     super(scope, id, props);
 
     // S3
-    const ocrFileBucket = new s3.Bucket(this, "OCRFileUploadsBuckets", {
-      bucketName: "ocr-file-uploads-buckets",
+    const ocrFileBucket = new s3.Bucket(this, "OCRFileBuckets", {
+      bucketName: "ocr-file-buckets",
       eventBridgeEnabled: true,
     });
 
@@ -42,28 +41,18 @@ export class InfraStack extends cdk.Stack {
       })
     );
 
-    // EventBridge
-    const ocrFileUploadedEvent = new events.Rule(this, "OCRrFileUploaded", {
-      ruleName: "OCRFileUploaded",
-      eventPattern: {
-        source: ["aws.s3"],
-        detailType: ["Object Created"],
-        detail: {
-          bucket: {
-            name: [ocrFileBucket.bucketName],
-          },
-          object: {
-            key: [
-              {
-                prefix: "input/",
-              },
-            ],
-          },
-        },
-      },
-    });
-    ocrFileUploadedEvent.addTarget(
-      new targets.LambdaFunction(lambdaFunction, {})
+    // S3 イベント通知を設定（画像がアップロードされたら Lambda をトリガー）
+    ocrFileBucket.addEventNotification(
+      s3.EventType.OBJECT_CREATED,
+      new s3n.LambdaDestination(lambdaFunction)
     );
+
+    // スタックの出力
+    new cdk.CfnOutput(this, "OCRBucketName", {
+      value: ocrFileBucket.bucketName,
+    });
+    new cdk.CfnOutput(this, "LambdaFunctionName", {
+      value: lambdaFunction.functionName,
+    });
   }
 }
