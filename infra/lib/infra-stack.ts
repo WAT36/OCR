@@ -36,7 +36,7 @@ export class InfraStack extends cdk.Stack {
     // Lambda に Textract へのアクセス権を付与
     lambdaFunction.addToRolePolicy(
       new iam.PolicyStatement({
-        actions: ["textract:DetectDocumentText"],
+        actions: ["textract:DetectDocumentText", "textract:AnalyzeDocument"],
         resources: ["*"],
       })
     );

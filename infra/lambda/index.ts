@@ -24,13 +24,14 @@ export const handler: S3Handler = async (event: S3Event) => {
     try {
       // AWS Textract で OCR を実行
       const textractResponse = await textract
-        .detectDocumentText({
+        .analyzeDocument({
           Document: {
             S3Object: {
               Bucket: bucketName,
               Name: fileKey,
             },
           },
+          FeatureTypes: ["TABLES", "FORMS"], // ✅ 日本語対応のため追加
         })
         .promise();
 
