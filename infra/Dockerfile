@@ -32,5 +32,5 @@ RUN pip3 install -r requirements.txt
 # Lambda ハンドラーのコピー
 COPY lambda/app.py .
 
-# AWS Lambda のエントリーポイント
-CMD ["app.lambda_handler"]
+# ✅ Lambda Entrypoint を修正（Python を直接実行するように変更）
+CMD ["python3", "app.lambda_handler"]
