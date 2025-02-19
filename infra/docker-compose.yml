@@ -1,0 +1,9 @@
+version: "3"
+services:
+  lambda-tesseract:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    container_name: "lambda-tesseract-container"
+    ports:
+      - 4000:4000
