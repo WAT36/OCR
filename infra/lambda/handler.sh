@@ -3,8 +3,13 @@
 echo "Starting Lambda Function"
 
 # 環境変数から S3 バケット名を取得
-BUCKET_NAME="ocr-buckets"
-OBJECT_KEY=$(jq -r '.Records[0].s3.object.key' /tmp/event.json)
+BUCKET_NAME="ocr-cdk"
+
+# Lambda の標準入力からイベントデータを取得
+EVENT_DATA=$(cat)
+
+# S3 のオブジェクトキーを jq で取得
+OBJECT_KEY=$(echo "$EVENT_DATA" | jq -r '.Records[0].s3.object.key')
 
 if [ -z "$BUCKET_NAME" ] || [ -z "$OBJECT_KEY" ]; then
     echo "Error: BUCKET_NAME or OBJECT_KEY is not set."
