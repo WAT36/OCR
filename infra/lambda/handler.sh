@@ -6,7 +6,7 @@ echo "starting Lambda Function"
 BUCKET_NAME="ocr-cdk"
 
 # Lambda の標準入力からイベントデータを取得
-EVENT_DATA=$1
+EVENT_DATA=$(cat -)
 
 # S3 のオブジェクトキーを jq で取得
 OBJECT_KEY=$(echo "$EVENT_DATA" | jq -r '.Records[0].s3.object.key')
