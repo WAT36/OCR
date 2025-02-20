@@ -2,6 +2,9 @@
 
 echo "starting Lambda Function"
 
+read -p 'ファイル名を入力してください' fh
+echo $fh
+
 # 環境変数から S3 バケット名を取得
 BUCKET_NAME="ocr-cdk"
 
