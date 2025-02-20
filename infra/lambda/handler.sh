@@ -11,6 +11,10 @@ EVENT_DATA=$(cat)
 # S3 のオブジェクトキーを jq で取得
 OBJECT_KEY=$(echo "$EVENT_DATA" | jq -r '.Records[0].s3.object.key')
 
+echo "BUCKET_NAME: $BUCKET_NAME"
+echo "EVENT_DATA: $EVENT_DATA"
+echo "OBJECT_KEY: $OBJECT_KEY"
+
 if [ -z "$BUCKET_NAME" ] || [ -z "$OBJECT_KEY" ]; then
     echo "Error: BUCKET_NAME or OBJECT_KEY is not set."
     exit 1
