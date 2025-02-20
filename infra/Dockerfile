@@ -8,7 +8,7 @@ RUN yum install -y gcc gcc-c++ make automake autoconf libtool \
     cairo cairo-devel \
     icu libicu libicu-devel \
     zlib zlib-devel \
-    wget curl unzip tar aws-cli
+    wget curl unzip tar aws-cli jq
 
 # ✅ EPEL リポジトリを有効化
 RUN amazon-linux-extras enable epel
