@@ -32,4 +32,4 @@ COPY lambda/handler.sh .
 RUN chmod +x handler.sh
 
 # ✅ AWS Lambda のエントリーポイントを Bash に変更
-CMD ["/bin/sh", "/var/task/handler.sh"]
+CMD ["/bin/sh", "/var/task/handler.handler"]
