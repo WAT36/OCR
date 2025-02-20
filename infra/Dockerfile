@@ -1,14 +1,14 @@
 # ✅ Amazon Linux 2 をベースにする
 FROM amazonlinux:2
 
-# 必要なツールをインストール
-RUN yum install -y gcc gcc-c++ make automake autoconf libtool \
+# ✅ 必要なツールをインストール
+RUN yum install -y bash jq gcc gcc-c++ make automake autoconf libtool \
     leptonica leptonica-devel \
     pango pango-devel \
     cairo cairo-devel \
     icu libicu libicu-devel \
     zlib zlib-devel \
-    wget curl unzip tar aws-cli jq
+    wget curl unzip tar aws-cli
 
 # ✅ EPEL リポジトリを有効化
 RUN amazon-linux-extras enable epel
